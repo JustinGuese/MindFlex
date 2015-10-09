@@ -1,0 +1,10 @@
+Dependencies:
+pyserial
+matplotlib
+numpy
+
+1.) Install Arduino IDE
+2.) connect arduino together with mindlex
+3.) serial monitor --> signals coming in are
+
+signal strength, attention, meditation, delta, theta, low alpha, high alpha, low beta, high beta, low gamma, high gamma
