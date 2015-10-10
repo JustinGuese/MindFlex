@@ -3,6 +3,7 @@ matplotlib.use('TKAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+import pong
 
 names = ["Relaxation","Concentration"]
 
@@ -34,18 +35,20 @@ def update(array):
     signals[1].append(concentrate_Value)
     #decide what state we are in
     if signals[0][-2]<relax_Value and signals[1][-2]>concentrate_Value:
-	#if current relax_Val over average & current conc_Val below average
-	# means definitely chill
 	print (bcolors.GREEN + "Definitely Chill!" + bcolors.ENDC)
+	pong.update(0) # protocol used in pong.py
     if signals[0][-2]>relax_Value and signals[1][-2]<concentrate_Value:
 	#other way around, definitely concentration
 	print (bcolors.FAIL + "Definitely Concentration!" + bcolors.ENDC)
+	pong.update(3) # protocol used in pong.py
     if (signals[0][-2]<relax_Value and signals[1][-2]<concentrate_Value) or (signals[0][-2]>relax_Value and signals[1][-2]>concentrate_Value):
 	# both below or above average
 	if relax_Value < concentrate_Value:
 		print "Maybe Concentration"
+		pong.update(2) # protocol used in pong.py
 	if concentrate_Value < relax_Value:
 		print "Maybe Relaxation"
+		pong.update(1) # protocol used in pong.py
     animated_barplot()
 
 	
