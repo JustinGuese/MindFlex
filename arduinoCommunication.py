@@ -1,6 +1,8 @@
 import serial
-import visualize
+import visualizeBar
 import threading
+import visual2
+import concRelaxPlot
 
 try:
 	ser = serial.Serial('/dev/ttyACM0', 9600)
@@ -13,9 +15,12 @@ while True:
 		list = (ser.readline()).split(",")
 		# we didn't get the whole string, so it's useless
 		if len(list) == 11:
-			print "Recieved msg no: ",counter
+			print "Recieved msg no: ",counter, "signal strength: ",list[0]
 			counter = counter + 1
-			visualize.gotMessage(list)
+			#visual2.gotMessage(list) # use this to get a plot
+			visualizeBar.update(list)
+			concRelaxPlot.update(list)
+			
 	except Exception:
 		pass #just ignore it, sometimes pyserial throws an exception
 
