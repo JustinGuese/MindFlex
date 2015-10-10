@@ -15,7 +15,7 @@ while True:
 		list = (ser.readline()).split(",")
 		# we didn't get the whole string, so it's useless
 		if len(list) == 11:
-			print "Recieved msg no: ",counter, "signal strength: ",list[0]
+			print "Recieved msg no: ",counter, "signal strength: ",list[0], " Concentration: ",list[1], " Meditation: ",list[2]
 			counter = counter + 1
 			#visual2.gotMessage(list) # use this to get a plot
 			visualizeBar.update(list)
